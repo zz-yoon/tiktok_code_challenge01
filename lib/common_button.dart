@@ -10,21 +10,22 @@ class CommonButton extends StatelessWidget {
   final Color? borderColor;
   final Color? backgroundColor;
   final VoidCallback? onTap;
+  final bool? isEnabled;
 
-  const CommonButton({super.key, required this.text, required this.textColor, this.icon, this.borderColor, this.backgroundColor, this.onTap});
+  const CommonButton({super.key, required this.text, required this.textColor, this.icon, this.borderColor, this.backgroundColor, this.onTap, this.isEnabled});
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: onTap,
+      onTap: isEnabled! ? onTap : null,
       child: FractionallySizedBox(
         widthFactor: 1,
         child: Container(
           padding: EdgeInsets.symmetric(vertical: Sizes.size16),
           decoration: BoxDecoration(
-              color: backgroundColor ?? Colors.white,
+              color: isEnabled! ? (backgroundColor ?? Colors.white) : Colors.grey.shade200,
               border: Border.all(
-                color: borderColor ?? Colors.grey.shade300,
+                color: isEnabled! ? (borderColor ?? Colors.grey.shade300) : Colors.grey.shade400,
                 width: Sizes.size1,
               ),
             borderRadius: BorderRadius.circular(Sizes.size32),
@@ -35,7 +36,7 @@ class CommonButton extends StatelessWidget {
                 if(icon != null)...[
                   Icon(
                     icon,
-                    color: textColor,
+                    color: isEnabled! ? textColor : Colors.grey,
                     size: Sizes.size20,
                   ),
                   Gaps.h10,
@@ -43,7 +44,7 @@ class CommonButton extends StatelessWidget {
                 Text(
                   text,
                   style: TextStyle(
-                    color: textColor,
+                    color: isEnabled! ? textColor : Colors.grey,
                     fontSize: 16,
                     fontWeight: FontWeight.w800,
                   ),

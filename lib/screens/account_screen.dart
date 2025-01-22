@@ -1,6 +1,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:tiktok_code_challenge01/common_button.dart';
 import 'package:tiktok_code_challenge01/constants/gaps.dart';
 import 'package:tiktok_code_challenge01/constants/sizes.dart';
 
@@ -27,6 +28,13 @@ class _AccountScreenState extends State<AccountScreen> {
         _userName = _userNameController.text;
       });
     });
+  }
+
+  @override
+  void dispose() {
+    // TODO: implement dispose
+    _userNameController.dispose();
+    super.dispose();
   }
 
   @override
@@ -72,25 +80,44 @@ class _AccountScreenState extends State<AccountScreen> {
                     cursorColor: Theme.of(context).primaryColor,
                   ),
                   Gaps.v28,
-                  FractionallySizedBox(
-                    widthFactor: 1,
-                    child : AnimatedContainer(
-                      duration: Duration(seconds :5),
-                      padding: const EdgeInsets.symmetric(vertical:Sizes.size16),
-                      decoration: BoxDecoration(
-                        color: _userName.isEmpty ? Colors.grey.shade300 : Colors.greenAccent,
-                        borderRadius: BorderRadius.circular(Sizes.size16),
-                      ),
-                      child: const Text(
-                        "Next",
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                          color:Colors.white,
-                          fontWeight: FontWeight.w600,
-                        ),
-                      ),
-                    ),
+                  CommonButton(
+                    text: "Next",
+                    textColor: Colors.white,
+                    backgroundColor: _userName.isEmpty
+                        ? Colors.grey.shade300
+                        : Colors.greenAccent,
+                    borderColor: _userName.isEmpty
+                        ? Colors.grey.shade300
+                        : Colors.greenAccent,
+                    isEnabled: _userName.isNotEmpty,
+                    onTap: _userName.isNotEmpty
+                        ? () {
+                      //아직미정
+                    }
+                        : null, // 비활성화 상태에서는 동작하지 않음
                   ),
+                  // FractionallySizedBox(
+                  //   widthFactor: 1,
+                  //   child : AnimatedContainer(
+                  //     duration: Duration(milliseconds :2),
+                  //     padding: const EdgeInsets.symmetric(vertical:Sizes.size16),
+                  //     decoration: BoxDecoration(
+                  //       color: _userName.isEmpty ? Colors.grey.shade300 : Colors.greenAccent,
+                  //       borderRadius: BorderRadius.circular(Sizes.size16),
+                  //     ),
+                  //     child: AnimatedDefaultTextStyle(
+                  //       duration: Duration(milliseconds: 2),
+                  //       style: TextStyle(
+                  //         color: _userName.isEmpty ? Colors.grey.shade400 :  Colors.white,
+                  //         fontWeight: FontWeight.w600,
+                  //       ),
+                  //       child: Text(
+                  //         "Next",
+                  //         textAlign: TextAlign.center,
+                  //       ),
+                  //     ),
+                  //   ),
+                  // ),
                 ],
               ),
             ),

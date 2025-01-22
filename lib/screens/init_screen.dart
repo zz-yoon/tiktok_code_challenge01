@@ -4,16 +4,26 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:tiktok_code_challenge01/auth_button.dart';
 import 'package:tiktok_code_challenge01/constants/gaps.dart';
+import 'package:tiktok_code_challenge01/screens/account_screen.dart';
 
 class InitScreen extends StatelessWidget {
   const InitScreen({super.key});
 
+  //accountTap : 계정 생성하기
+  void _onAccountTap(BuildContext context) {
+    Navigator.of(context).push(
+      MaterialPageRoute(builder : (context) => const AccountScreen())
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      //backgroundColor: Colors.white,
       appBar: AppBar(
         centerTitle: true,
         backgroundColor: Colors.white,
+        elevation: 0,
         title: Icon(
           FontAwesomeIcons.twitter,
           color: Colors.lightBlue,
@@ -70,11 +80,7 @@ class InitScreen extends StatelessWidget {
                               textColor: Colors.white,
                               borderColor:Colors.grey,
                               backgroundColor: Colors.black,
-                              onTap: () {
-                                ScaffoldMessenger.of(context).showSnackBar(
-                                  SnackBar(content: Text("다음 이 시간에 create account ~"),),
-                                );
-                              }
+                              onTap: () => _onAccountTap(context),
                           ),
                           Padding(
                             padding: EdgeInsets.only(top:30),

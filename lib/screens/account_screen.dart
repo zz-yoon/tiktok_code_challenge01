@@ -4,6 +4,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:tiktok_code_challenge01/common_button.dart';
 import 'package:tiktok_code_challenge01/constants/gaps.dart';
 import 'package:tiktok_code_challenge01/constants/sizes.dart';
+import 'package:tiktok_code_challenge01/screens/experience_screen.dart';
 
 class AccountScreen extends StatefulWidget {
   const AccountScreen({super.key});
@@ -16,6 +17,7 @@ class _AccountScreenState extends State<AccountScreen> {
 
   final TextEditingController _userNameController  = TextEditingController();
   String _userName = '';
+
 
   @override
   void initState() {
@@ -35,6 +37,15 @@ class _AccountScreenState extends State<AccountScreen> {
     // TODO: implement dispose
     _userNameController.dispose();
     super.dispose();
+  }
+
+  //next 페이지 이동
+  void _onNextTab() {
+    if(_userName.isEmpty) return;
+
+    Navigator.of(context).push(
+      MaterialPageRoute(builder: (context) => const ExperienceScreen()),
+    );
   }
 
   @override
@@ -66,6 +77,7 @@ class _AccountScreenState extends State<AccountScreen> {
                     ),
                   ),
                   Gaps.v16,
+                  //Name
                   TextField(
                     controller: _userNameController,
                     decoration: InputDecoration(
@@ -79,6 +91,9 @@ class _AccountScreenState extends State<AccountScreen> {
                     ),
                     cursorColor: Theme.of(context).primaryColor,
                   ),
+                  // Column(
+                  //
+                  // ),
                   Gaps.v28,
                   CommonButton(
                     text: "Next",
@@ -93,6 +108,7 @@ class _AccountScreenState extends State<AccountScreen> {
                     onTap: _userName.isNotEmpty
                         ? () {
                       //아직미정
+                      _onNextTab();
                     }
                         : null, // 비활성화 상태에서는 동작하지 않음
                   ),

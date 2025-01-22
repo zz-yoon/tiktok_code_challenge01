@@ -10,9 +10,9 @@ class CommonButton extends StatelessWidget {
   final Color? borderColor;
   final Color? backgroundColor;
   final VoidCallback? onTap;
-  final bool? isEnabled;
+  final bool isEnabled;
 
-  const CommonButton({super.key, required this.text, required this.textColor, this.icon, this.borderColor, this.backgroundColor, this.onTap, this.isEnabled});
+  const CommonButton({super.key, required this.text, required this.textColor, this.icon, this.borderColor, this.backgroundColor, this.onTap, this.isEnabled = true});
 
   @override
   Widget build(BuildContext context) {
@@ -23,9 +23,9 @@ class CommonButton extends StatelessWidget {
         child: Container(
           padding: EdgeInsets.symmetric(vertical: Sizes.size16),
           decoration: BoxDecoration(
-              color: isEnabled! ? (backgroundColor ?? Colors.white) : Colors.grey.shade200,
+              color: isEnabled ? (backgroundColor ?? Colors.white) : Colors.grey.shade200,
               border: Border.all(
-                color: isEnabled! ? (borderColor ?? Colors.grey.shade300) : Colors.grey.shade400,
+                color: isEnabled ? (borderColor ?? Colors.grey.shade300) : Colors.grey.shade400,
                 width: Sizes.size1,
               ),
             borderRadius: BorderRadius.circular(Sizes.size32),
@@ -36,7 +36,7 @@ class CommonButton extends StatelessWidget {
                 if(icon != null)...[
                   Icon(
                     icon,
-                    color: isEnabled! ? textColor : Colors.grey,
+                    color: isEnabled ? textColor : Colors.grey,
                     size: Sizes.size20,
                   ),
                   Gaps.h10,
@@ -44,7 +44,7 @@ class CommonButton extends StatelessWidget {
                 Text(
                   text,
                   style: TextStyle(
-                    color: isEnabled! ? textColor : Colors.grey,
+                    color: isEnabled ? textColor : Colors.grey,
                     fontSize: 16,
                     fontWeight: FontWeight.w800,
                   ),

@@ -16,8 +16,9 @@ class AccountScreen extends StatefulWidget {
 class _AccountScreenState extends State<AccountScreen> {
 
   final TextEditingController _userNameController  = TextEditingController();
+  final TextEditingController _emailorPhoneController = TextEditingController();
   String _userName = '';
-
+  String _emailorPhone = '';
 
   @override
   void initState() {
@@ -26,8 +27,10 @@ class _AccountScreenState extends State<AccountScreen> {
 
     _userNameController.addListener(() {
       print(_userNameController.text);
+      print(_emailorPhoneController.text);
       setState(() {
         _userName = _userNameController.text;
+        _emailorPhone = _emailorPhoneController.text;
       });
     });
   }
@@ -36,16 +39,31 @@ class _AccountScreenState extends State<AccountScreen> {
   void dispose() {
     // TODO: implement dispose
     _userNameController.dispose();
+    _emailorPhoneController.dispose();
     super.dispose();
   }
 
   //next 페이지 이동
   void _onNextTab() {
-    if(_userName.isEmpty) return;
+    if(_userName.isEmpty || _isEmailorPhoneValid(_emailorPhone) != null) return;
 
     Navigator.of(context).push(
       MaterialPageRoute(builder: (context) => const ExperienceScreen()),
     );
+  }
+
+  //validate : email or phone
+  String? _isEmailorPhoneValid(String emailorPhone) {
+    final emailRegex = RegExp(r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$');
+    final phoneRegex = RegExp(r'^[0-9]{10,15}$');
+
+    if(emailRegex.hasMatch(emailorPhone)) {
+      return null;
+    }else if(phoneRegex.hasMatch(emailorPhone)) {
+      return null;
+    }else {
+      return "Invalidate email or phone";
+    }
   }
 
   @override
@@ -91,6 +109,20 @@ class _AccountScreenState extends State<AccountScreen> {
                     ),
                     cursorColor: Theme.of(context).primaryColor,
                   ),
+                  TextField(
+                    controller: _emailorPhoneController,
+                    decoration: InputDecoration(
+                      hintText: "Phone number or email address",
+                      errorText: _emailorPhone.isNotEmpty ? _isEmailorPhoneValid(_emailorPhone) : null,
+                      enabledBorder: UnderlineInputBorder(
+                        borderSide : BorderSide(color: Colors.grey.shade400),
+                      ),
+                      focusedBorder: UnderlineInputBorder(
+                        borderSide : BorderSide(color: Colors.grey.shade400),
+                      ),
+                    ),
+                    cursorColor: Theme.of(context).primaryColor,
+                  ),
                   // Column(
                   //
                   // ),
@@ -98,16 +130,15 @@ class _AccountScreenState extends State<AccountScreen> {
                   CommonButton(
                     text: "Next",
                     textColor: Colors.white,
-                    backgroundColor: _userName.isEmpty
+                    backgroundColor: _userName.isEmpty && _isEmailorPhoneValid(_emailorPhone) == null
                         ? Colors.grey.shade300
                         : Colors.greenAccent,
-                    borderColor: _userName.isEmpty
+                    borderColor: _userName.isEmpty && _isEmailorPhoneValid(_emailorPhone) == null
                         ? Colors.grey.shade300
                         : Colors.greenAccent,
-                    isEnabled: _userName.isNotEmpty,
-                    onTap: _userName.isNotEmpty
+                    isEnabled: _userName.isNotEmpty && _isEmailorPhoneValid(_emailorPhone) == null,
+                    onTap: _userName.isNotEmpty && _isEmailorPhoneValid(_emailorPhone) == null
                         ? () {
-                      //아직미정
                       _onNextTab();
                     }
                         : null, // 비활성화 상태에서는 동작하지 않음

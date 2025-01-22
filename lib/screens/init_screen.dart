@@ -2,7 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:tiktok_code_challenge01/auth_button.dart';
+import 'package:tiktok_code_challenge01/common_button.dart';
 import 'package:tiktok_code_challenge01/constants/gaps.dart';
 import 'package:tiktok_code_challenge01/screens/account_screen.dart';
 
@@ -49,7 +49,7 @@ class InitScreen extends StatelessWidget {
                       padding: EdgeInsets.only(left:24.0,right: 24.0),
                       child: Column(
                         children: [
-                          AuthButton(
+                          CommonButton(
                             text : 'Continue with Google',
                             textColor: Colors.black,
                             icon: FontAwesomeIcons.google,
@@ -62,7 +62,7 @@ class InitScreen extends StatelessWidget {
                             }
                           ),
                           Gaps.v16,
-                          AuthButton(
+                          CommonButton(
                               text : 'Continue with Apple',
                               textColor: Colors.black,
                               icon: FontAwesomeIcons.apple,
@@ -75,7 +75,7 @@ class InitScreen extends StatelessWidget {
                               }
                           ),
                           Gaps.v32,
-                          AuthButton(
+                          CommonButton(
                               text : 'Create account',
                               textColor: Colors.white,
                               borderColor:Colors.grey,

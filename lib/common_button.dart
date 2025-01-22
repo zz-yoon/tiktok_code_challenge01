@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:tiktok_code_challenge01/constants/gaps.dart';
 import 'package:tiktok_code_challenge01/constants/sizes.dart';
 
-class AuthButton extends StatelessWidget {
+class CommonButton extends StatelessWidget {
   final String text; //
   final Color textColor;
   final IconData? icon;
@@ -11,7 +11,7 @@ class AuthButton extends StatelessWidget {
   final Color? backgroundColor;
   final VoidCallback? onTap;
 
-  const AuthButton({super.key, required this.text, required this.textColor, this.icon, this.borderColor, this.backgroundColor, this.onTap});
+  const CommonButton({super.key, required this.text, required this.textColor, this.icon, this.borderColor, this.backgroundColor, this.onTap});
 
   @override
   Widget build(BuildContext context) {

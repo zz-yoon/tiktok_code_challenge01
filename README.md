@@ -1,26 +1,6 @@
 # tiktok_code_challenge01
 tiktok_code_challenge01
 
-
-# 챌린지 요구 사항
-## (1) Initial Screen:
-  This is the first screen that the user sees when they open the app. It has three (3) buttons. When the user presses on "Create Account" navigate the user to the "Create Account" screen.
-  사용자가 앱을 열면 가장 먼저 보게 되는 화면입니다. 이 화면에는 3개의 버튼이 있습니다. 사용자가 '계정 만들기'를 누르면 '계정 만들기' 화면으로 이동합니다.
-## **(2) Create Account Screen:**
-- This screen has a form with inputs for "Name", "Email" and "Date Of Birth".
-- When the user writes on the inputs a green icon should show up next to the input.
-- When all the inputs are filled, the "Next" button should be enabled.
-- When the user presses on "Next" navigate the user to the "Customize Experience" screen.
-- 이 화면에는 "이름", "이메일" 및 "생년월일"을 입력하는 양식이 있습니다.
-- 사용자가 입력란에 글을 쓰면 입력란 옆에 녹색 아이콘이 표시되어야 합니다.
-- 모든 입력란이 채워지면 "다음" 버튼이 활성화되어야 합니다.
-- 사용자가 "다음"을 누르면 사용자를 "커스터마이징" 화면으로 이동합니다.
-## **(3) Customize Experience Screen:**
-- This screen should have a Switch input and a "Next" button.
-- When the user enables the switch, the "Next" button should be enabled.
-- 이 화면에는 스위치 입력과 "다음" 버튼이 있어야 합니다.
-- 사용자가 스위치를 활성화하면 "다음" 버튼이 활성화되어야 합니다.
-
 #  챌린지 접근 방법
 - 강의 때 배운 것을 토대로 1차 구조 잡아보기
    - 각 강의마다 접목시킬 수 있는 부분들 바로바로 코드 진입 (시간관계상 회사와 병행하면서 과제 요구사항을 다 짜려면 이 방법도 나쁘지 않을 것 같아 바로 시도해보았다!)

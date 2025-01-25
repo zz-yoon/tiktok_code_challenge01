@@ -49,7 +49,7 @@ class InitScreen extends StatelessWidget {
                       padding: EdgeInsets.only(left:24.0,right: 24.0),
                       child: Column(
                         children: [
-                          CommonButton(
+                          FullButton(
                             text : 'Continue with Google',
                             textColor: Colors.black,
                             icon: FontAwesomeIcons.google,
@@ -62,7 +62,7 @@ class InitScreen extends StatelessWidget {
                             }
                           ),
                           Gaps.v16,
-                          CommonButton(
+                          FullButton(
                               text : 'Continue with Apple',
                               textColor: Colors.black,
                               icon: FontAwesomeIcons.apple,
@@ -75,7 +75,7 @@ class InitScreen extends StatelessWidget {
                               }
                           ),
                           Gaps.v32,
-                          CommonButton(
+                          FullButton(
                               text : 'Create account',
                               textColor: Colors.white,
                               borderColor:Colors.grey,

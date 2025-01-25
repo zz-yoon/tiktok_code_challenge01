@@ -19,7 +19,7 @@ class ExperienceScreen extends StatelessWidget {
       bottomNavigationBar: SafeArea(
         child: Padding(
           padding: const EdgeInsets.all(16.0),
-          child: CommonButton(
+          child: FullButton(
               text: "Next",
               textColor: Colors.white,
               backgroundColor: Colors.black,

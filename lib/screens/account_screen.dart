@@ -127,7 +127,7 @@ class _AccountScreenState extends State<AccountScreen> {
                   //
                   // ),
                   Gaps.v28,
-                  CommonButton(
+                  FullButton(
                     text: "Next",
                     textColor: Colors.white,
                     backgroundColor: _userName.isEmpty && _isEmailorPhoneValid(_emailorPhone) == null

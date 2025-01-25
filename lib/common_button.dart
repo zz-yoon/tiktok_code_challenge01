@@ -3,16 +3,16 @@ import 'package:flutter/material.dart';
 import 'package:tiktok_code_challenge01/constants/gaps.dart';
 import 'package:tiktok_code_challenge01/constants/sizes.dart';
 
-class CommonButton extends StatelessWidget {
-  final String text; //
-  final Color textColor;
-  final IconData? icon;
-  final Color? borderColor;
-  final Color? backgroundColor;
-  final VoidCallback? onTap;
-  final bool isEnabled;
+class FullButton extends StatelessWidget {
+  final String text; //버튼 텍스트
+  final Color textColor; //버튼 색상
+  final IconData? icon; //아이콘 사용할 것인지 ?
+  final Color? borderColor; //버튼 보더 색상을 줄것인지
+  final Color? backgroundColor; // 버튼 백그라운드 색상
+  final VoidCallback? onTap; //버튼 탭시 동작
+  final bool isEnabled; //버튼의 비활성화 상태
 
-  const CommonButton({super.key, required this.text, required this.textColor, this.icon, this.borderColor, this.backgroundColor, this.onTap, this.isEnabled = true});
+  const FullButton({super.key, required this.text, required this.textColor, this.icon, this.borderColor, this.backgroundColor, this.onTap, this.isEnabled = true});
 
   @override
   Widget build(BuildContext context) {

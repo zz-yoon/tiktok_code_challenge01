@@ -1,6 +1,6 @@
 
 import 'package:flutter/material.dart';
-import 'package:tiktok_code_challenge01/common_button.dart';
+import 'package:tiktok_code_challenge01/full_button.dart';
 
 class ExperienceScreen extends StatelessWidget {
   const ExperienceScreen({super.key});

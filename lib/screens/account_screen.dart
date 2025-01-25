@@ -1,7 +1,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:tiktok_code_challenge01/common_button.dart';
+import 'package:tiktok_code_challenge01/full_button.dart';
 import 'package:tiktok_code_challenge01/constants/gaps.dart';
 import 'package:tiktok_code_challenge01/constants/sizes.dart';
 import 'package:tiktok_code_challenge01/screens/experience_screen.dart';
@@ -25,9 +25,11 @@ class _AccountScreenState extends State<AccountScreen> {
     // TODO: implement initState
     super.initState();
 
-    _userNameController.addListener(() {
+    _userNameController.addListener((){
+      //디버깅
       print(_userNameController.text);
       print(_emailorPhoneController.text);
+
       setState(() {
         _userName = _userNameController.text;
         _emailorPhone = _emailorPhoneController.text;
@@ -52,9 +54,20 @@ class _AccountScreenState extends State<AccountScreen> {
     );
   }
 
+  //validate : name
+  String? _isNameValid(String name) {
+    //한글, 영문만 사용가능
+    final nameRegExp = RegExp(r'^[a-zA-Z]{2,20}$');
+    if(nameRegExp.hasMatch(name)) {
+      return null;
+    }else {
+      return "Invalidate name";
+    }
+  }
+
   //validate : email or phone
   String? _isEmailorPhoneValid(String emailorPhone) {
-    final emailRegex = RegExp(r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$');
+    final emailRegex = RegExp(r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+");
     final phoneRegex = RegExp(r'^[0-9]{10,15}$');
 
     if(emailRegex.hasMatch(emailorPhone)) {
@@ -64,6 +77,17 @@ class _AccountScreenState extends State<AccountScreen> {
     }else {
       return "Invalidate email or phone";
     }
+  }
+
+  //outSide를 클릭하면 onFocus
+  void _onScaffoldTap(){
+    print("실행됨??");
+    FocusScope.of(context).unfocus();
+  }
+
+  void _onSubmit() {
+    if(_emailorPhone.isEmpty || _isEmailorPhoneValid != null) return;
+    Navigator.push(context, MaterialPageRoute(builder: (context) => ExperienceScreen()));
   }
 
   @override
@@ -79,93 +103,104 @@ class _AccountScreenState extends State<AccountScreen> {
           size: 30.0,
         ),
       ),
-      body: SingleChildScrollView(
-        child: SafeArea(child:
-          Container(
-            child: Padding(
-              padding: EdgeInsets.symmetric(horizontal: Sizes.size36),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Gaps.v40,
-                  Text("Create your account",
-                    style: TextStyle(
-                      fontSize: 24,
-                      fontWeight: FontWeight.w800,
-                    ),
-                  ),
-                  Gaps.v16,
-                  //Name
-                  TextField(
-                    controller: _userNameController,
-                    decoration: InputDecoration(
-                      hintText: "Name",
-                      enabledBorder: UnderlineInputBorder(
-                        borderSide : BorderSide(color: Colors.grey.shade400),
-                      ),
-                      focusedBorder: UnderlineInputBorder(
-                        borderSide : BorderSide(color: Colors.grey.shade400),
+      body: GestureDetector(
+        behavior: HitTestBehavior.opaque,
+        onTap : _onScaffoldTap,
+        child: SingleChildScrollView(
+          child: SafeArea(child:
+            Container(
+              child: Padding(
+                padding: EdgeInsets.symmetric(horizontal: Sizes.size36),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Gaps.v40,
+                    Text("Create your account",
+                      style: TextStyle(
+                        fontSize: 24,
+                        fontWeight: FontWeight.w800,
                       ),
                     ),
-                    cursorColor: Theme.of(context).primaryColor,
-                  ),
-                  TextField(
-                    controller: _emailorPhoneController,
-                    decoration: InputDecoration(
-                      hintText: "Phone number or email address",
-                      errorText: _emailorPhone.isNotEmpty ? _isEmailorPhoneValid(_emailorPhone) : null,
-                      enabledBorder: UnderlineInputBorder(
-                        borderSide : BorderSide(color: Colors.grey.shade400),
+                    Gaps.v16,
+                    //Name
+                    TextField(
+                      controller: _userNameController,
+                      keyboardType: TextInputType.name,
+                      autocorrect: false,
+                      onEditingComplete:_onSubmit,
+                      decoration: InputDecoration(
+                        hintText: "Name",
+                        errorText: _userName.isNotEmpty ? _isNameValid(_userName) : null,
+                        enabledBorder: UnderlineInputBorder(
+                          borderSide : BorderSide(color: Colors.grey.shade400),
+                        ),
+                        focusedBorder: UnderlineInputBorder(
+                          borderSide : BorderSide(color: Colors.grey.shade400),
+                        ),
                       ),
-                      focusedBorder: UnderlineInputBorder(
-                        borderSide : BorderSide(color: Colors.grey.shade400),
-                      ),
+                      cursorColor: Theme.of(context).primaryColor,
                     ),
-                    cursorColor: Theme.of(context).primaryColor,
-                  ),
-                  // Column(
-                  //
-                  // ),
-                  Gaps.v28,
-                  FullButton(
-                    text: "Next",
-                    textColor: Colors.white,
-                    backgroundColor: _userName.isEmpty && _isEmailorPhoneValid(_emailorPhone) == null
-                        ? Colors.grey.shade300
-                        : Colors.greenAccent,
-                    borderColor: _userName.isEmpty && _isEmailorPhoneValid(_emailorPhone) == null
-                        ? Colors.grey.shade300
-                        : Colors.greenAccent,
-                    isEnabled: _userName.isNotEmpty && _isEmailorPhoneValid(_emailorPhone) == null,
-                    onTap: _userName.isNotEmpty && _isEmailorPhoneValid(_emailorPhone) == null
-                        ? () {
-                      _onNextTab();
-                    }
-                        : null, // 비활성화 상태에서는 동작하지 않음
-                  ),
-                  // FractionallySizedBox(
-                  //   widthFactor: 1,
-                  //   child : AnimatedContainer(
-                  //     duration: Duration(milliseconds :2),
-                  //     padding: const EdgeInsets.symmetric(vertical:Sizes.size16),
-                  //     decoration: BoxDecoration(
-                  //       color: _userName.isEmpty ? Colors.grey.shade300 : Colors.greenAccent,
-                  //       borderRadius: BorderRadius.circular(Sizes.size16),
-                  //     ),
-                  //     child: AnimatedDefaultTextStyle(
-                  //       duration: Duration(milliseconds: 2),
-                  //       style: TextStyle(
-                  //         color: _userName.isEmpty ? Colors.grey.shade400 :  Colors.white,
-                  //         fontWeight: FontWeight.w600,
-                  //       ),
-                  //       child: Text(
-                  //         "Next",
-                  //         textAlign: TextAlign.center,
-                  //       ),
-                  //     ),
-                  //   ),
-                  // ),
-                ],
+                    //email or phone
+                    TextField(
+                      controller: _emailorPhoneController,
+                      keyboardType :TextInputType.emailAddress,
+                      autocorrect: false,
+                      decoration: InputDecoration(
+                        hintText: "Phone number or email address",
+                        errorText: _emailorPhone.isNotEmpty ? _isEmailorPhoneValid(_emailorPhone) : null,
+                        enabledBorder: UnderlineInputBorder(
+                          borderSide : BorderSide(color: Colors.grey.shade400),
+                        ),
+                        focusedBorder: UnderlineInputBorder(
+                          borderSide : BorderSide(color: Colors.grey.shade400),
+                        ),
+                      ),
+                      cursorColor: Theme.of(context).primaryColor,
+                    ),
+                    // Column(
+                    //
+                    // ),
+                    Gaps.v28,
+                    FullButton(
+                      text: "Next",
+                      textColor: Colors.white,
+                      backgroundColor: _userName.isEmpty && _isEmailorPhoneValid(_emailorPhone) == null
+                          ? Colors.grey.shade300
+                          : Colors.greenAccent,
+                      borderColor: _userName.isEmpty && _isEmailorPhoneValid(_emailorPhone) == null
+                          ? Colors.grey.shade300
+                          : Colors.greenAccent,
+                      isEnabled: _userName.isNotEmpty && _isEmailorPhoneValid(_emailorPhone) == null,
+                      onTap: _userName.isNotEmpty && _isEmailorPhoneValid(_emailorPhone) == null
+                          ? () {
+                        _onNextTab();
+                      }
+                          : null, // 비활성화 상태에서는 동작하지 않음
+                    ),
+                    // FractionallySizedBox(
+                    //   widthFactor: 1,
+                    //   child : AnimatedContainer(
+                    //     duration: Duration(milliseconds :2),
+                    //     padding: const EdgeInsets.symmetric(vertical:Sizes.size16),
+                    //     decoration: BoxDecoration(
+                    //       color: _userName.isEmpty ? Colors.grey.shade300 : Colors.greenAccent,
+                    //       borderRadius: BorderRadius.circular(Sizes.size16),
+                    //     ),
+                    //     child: AnimatedDefaultTextStyle(
+                    //       duration: Duration(milliseconds: 2),
+                    //       style: TextStyle(
+                    //         color: _userName.isEmpty ? Colors.grey.shade400 :  Colors.white,
+                    //         fontWeight: FontWeight.w600,
+                    //       ),
+                    //       child: Text(
+                    //         "Next",
+                    //         textAlign: TextAlign.center,
+                    //       ),
+                    //     ),
+                    //   ),
+                    // ),
+                  ],
+                ),
               ),
             ),
           ),

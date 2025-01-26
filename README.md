@@ -22,7 +22,7 @@ tiktok_code_challenge01
 
 # 새로웠던 것을 배운날! 뚜둔
 - scaffold body background 색상이 회색이었다니?! 이 부분을 한번에 theme으로 main.dart에 설정이 가능하다니!!
-
+- 
 - *TextField는 당연하겠지만서도 String 으로 다룬다. phone + email 문자열로 유효성검사하면됨!
 
 # 아쉬었던 점

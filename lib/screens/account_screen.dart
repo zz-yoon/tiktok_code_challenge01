@@ -32,6 +32,11 @@ class _AccountScreenState extends State<AccountScreen> {
 
       setState(() {
         _userName = _userNameController.text;
+      });
+    });
+
+    _emailorPhoneController.addListener(() {
+      setState(() {
         _emailorPhone = _emailorPhoneController.text;
       });
     });
@@ -81,7 +86,6 @@ class _AccountScreenState extends State<AccountScreen> {
 
   //outSide를 클릭하면 onFocus
   void _onScaffoldTap(){
-    print("실행됨??");
     FocusScope.of(context).unfocus();
   }
 

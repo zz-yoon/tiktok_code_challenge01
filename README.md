@@ -28,6 +28,11 @@ tiktok_code_challenge01
 -  Navigator.of(context)
    .push(MaterialPageRoute(builder: (context) => const LoginFormScreen())); => 초기 Navigator 작업
 - Flutter에서 TextFormField에 값을 입력할 때, controller를 명시적으로 추가하지 않으면 내부적으로 상태를 관리하지만, 특정 경우 입력이 안 되는 문제가 발생할 수 있다. (확인필요)
+- //chips data
+  for (var interest in interests)
+  Container(
+  child: Text(interest),
+  ), 이렇게 불러올 수가 있구나!
 - *TextField는 당연하겠지만서도 String 으로 다룬다. phone + email 문자열로 유효성검사하면됨!
 
 # 아쉬었던 점

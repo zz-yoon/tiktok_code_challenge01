@@ -1,6 +1,5 @@
-
 import 'package:flutter/material.dart';
-import 'package:tiktok_code_challenge01/full_button.dart';
+import 'package:tiktok_code_challenge01/widgets/full_button.dart';
 
 class ExperienceScreen extends StatelessWidget {
   const ExperienceScreen({super.key});
@@ -8,21 +7,17 @@ class ExperienceScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-
-      ),
-      body: SafeArea(child:
-      Column(
-
-      ),
+      appBar: AppBar(),
+      body: SafeArea(
+        child: Column(),
       ),
       bottomNavigationBar: SafeArea(
         child: Padding(
           padding: const EdgeInsets.all(16.0),
           child: FullButton(
-              text: "Next",
-              textColor: Colors.white,
-              backgroundColor: Colors.black,
+            text: "Next",
+            textColor: Colors.white,
+            backgroundColor: Colors.black,
           ),
         ),
       ),

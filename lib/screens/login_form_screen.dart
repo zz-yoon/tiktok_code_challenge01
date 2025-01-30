@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:tiktok_code_challenge01/constants/gaps.dart';
 import 'package:tiktok_code_challenge01/constants/sizes.dart';
-import 'package:tiktok_code_challenge01/full_button.dart';
 import 'package:tiktok_code_challenge01/screens/onboarding/interests_screen.dart';
+import 'package:tiktok_code_challenge01/widgets/full_button.dart';
 
 class LoginFormScreen extends StatefulWidget {
   const LoginFormScreen({super.key});

@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:tiktok_code_challenge01/constants/gaps.dart';
 import 'package:tiktok_code_challenge01/constants/sizes.dart';
-import 'package:tiktok_code_challenge01/full_button.dart';
 import 'package:tiktok_code_challenge01/screens/experience_screen.dart';
+import 'package:tiktok_code_challenge01/widgets/full_button.dart';
 
 class AccountScreen extends StatefulWidget {
   const AccountScreen({super.key});

@@ -2,73 +2,93 @@ import 'package:flutter/material.dart';
 import 'package:tiktok_code_challenge01/constants/gaps.dart';
 import 'package:tiktok_code_challenge01/constants/sizes.dart';
 import 'package:tiktok_code_challenge01/interests_data.dart';
+import 'package:tiktok_code_challenge01/widgets/chip.dart';
 
-class InterestsScreen extends StatelessWidget {
+class InterestsScreen extends StatefulWidget {
   const InterestsScreen({super.key});
+
+  @override
+  State<InterestsScreen> createState() => _InterestsScreenState();
+}
+
+class _InterestsScreenState extends State<InterestsScreen> {
+  //scroll event 탐지
+  final ScrollController _scrollController = ScrollController();
+
+  bool _showTitle = false;
+
+  void _onScroll() {
+    if (_scrollController.offset > 60) {
+      if (_showTitle) return;
+      setState(() {
+        _showTitle = true;
+      });
+    } else {
+      setState(() {
+        _showTitle = false;
+      });
+    }
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    _scrollController.addListener(_onScroll);
+  }
+
+  @override
+  void dispose() {
+    _scrollController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Choose your interests"),
+        title: AnimatedOpacity(
+            opacity: _showTitle ? 1 : 0,
+            duration: Duration(milliseconds: 3),
+            child: Text("Choose your interests")),
       ),
       body: SafeArea(
-        child: SingleChildScrollView(
-          child: Padding(
-            padding: EdgeInsets.symmetric(
-                horizontal: Sizes.size24, vertical: Sizes.size16),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Gaps.v32,
-                Text(
-                  "Choose your interests",
-                  style: TextStyle(
-                    fontSize: Sizes.size40,
-                    fontWeight: FontWeight.bold,
+        child: Scrollbar(
+          controller: _scrollController,
+          child: SingleChildScrollView(
+            controller: _scrollController,
+            child: Padding(
+              padding: EdgeInsets.symmetric(
+                  horizontal: Sizes.size24, vertical: Sizes.size16),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Gaps.v32,
+                  Text(
+                    "Choose your interests",
+                    style: TextStyle(
+                      fontSize: Sizes.size40,
+                      fontWeight: FontWeight.bold,
+                    ),
                   ),
-                ),
-                Gaps.v20,
-                Text(
-                  "Get better video recommendations",
-                  style: TextStyle(
-                    fontSize: Sizes.size20,
+                  Gaps.v20,
+                  Text(
+                    "Get better video recommendations",
+                    style: TextStyle(
+                      fontSize: Sizes.size20,
+                    ),
                   ),
-                ),
-                Gaps.v64,
-                Wrap(
-                  runSpacing: 20,
-                  spacing: 15,
-                  children: [
-                    //chips data
-                    for (var interest in interests)
-                      Container(
-                        padding: EdgeInsets.symmetric(
-                          vertical: Sizes.size12,
-                          horizontal: Sizes.size24,
-                        ),
-                        decoration: BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.circular(Sizes.size32),
-                          border: Border.all(
-                            color: Color.fromRGBO(0, 0, 0, 0.1),
-                          ),
-                          boxShadow: [
-                            BoxShadow(
-                              color: Color.fromRGBO(0, 0, 0, 0.05),
-                              blurRadius: 5,
-                              spreadRadius: 5,
-                            )
-                          ],
-                        ),
-                        child: Text(
-                          interest,
-                          style: TextStyle(fontWeight: FontWeight.bold),
-                        ),
-                      ),
-                  ],
-                ),
-              ],
+                  Gaps.v64,
+                  Wrap(
+                    runSpacing: 20,
+                    spacing: 15,
+                    children: [
+                      //chips data
+                      for (var interest in interests)
+                        ChipButton(interest: interest),
+                    ],
+                  ),
+                ],
+              ),
             ),
           ),
         ),

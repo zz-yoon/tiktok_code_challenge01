@@ -15,7 +15,8 @@ class InterestsScreen extends StatelessWidget {
       body: SafeArea(
         child: SingleChildScrollView(
           child: Padding(
-            padding: EdgeInsets.symmetric(horizontal: Sizes.size24),
+            padding: EdgeInsets.symmetric(
+                horizontal: Sizes.size24, vertical: Sizes.size16),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -76,18 +77,19 @@ class InterestsScreen extends StatelessWidget {
         child: BottomAppBar(
           child: Padding(
             padding: const EdgeInsets.only(
-              bottom: Sizes.size20,
-              top: Sizes.size12,
-              left: Sizes.size20,
-              right: Sizes.size20,
+              bottom: Sizes.size5,
+              top: Sizes.size5,
+              left: Sizes.size5,
+              right: Sizes.size5,
             ),
             child: Container(
-              //padding: const EdgeInsets.symmetric(vertical: Sizes.size16),
+              padding: const EdgeInsets.symmetric(vertical: Sizes.size10),
               decoration: BoxDecoration(
                 color: Theme.of(context).primaryColor,
               ),
               child: const Text(
                 "Next",
+                textAlign: TextAlign.center,
                 style: TextStyle(
                   color: Colors.white,
                   fontSize: Sizes.size20,

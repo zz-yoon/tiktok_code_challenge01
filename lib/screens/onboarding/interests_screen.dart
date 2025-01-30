@@ -35,12 +35,65 @@ class InterestsScreen extends StatelessWidget {
                   ),
                 ),
                 Gaps.v64,
-                //chips data
-                for (var interest in interests)
-                  Container(
-                    child: Text(interest),
-                  ),
+                Wrap(
+                  runSpacing: 20,
+                  spacing: 15,
+                  children: [
+                    //chips data
+                    for (var interest in interests)
+                      Container(
+                        padding: EdgeInsets.symmetric(
+                          vertical: Sizes.size12,
+                          horizontal: Sizes.size24,
+                        ),
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(Sizes.size32),
+                          border: Border.all(
+                            color: Color.fromRGBO(0, 0, 0, 0.1),
+                          ),
+                          boxShadow: [
+                            BoxShadow(
+                              color: Color.fromRGBO(0, 0, 0, 0.05),
+                              blurRadius: 5,
+                              spreadRadius: 5,
+                            )
+                          ],
+                        ),
+                        child: Text(
+                          interest,
+                          style: TextStyle(fontWeight: FontWeight.bold),
+                        ),
+                      ),
+                  ],
+                ),
               ],
+            ),
+          ),
+        ),
+      ),
+      bottomNavigationBar: SafeArea(
+        child: BottomAppBar(
+          child: Padding(
+            padding: const EdgeInsets.only(
+              bottom: Sizes.size20,
+              top: Sizes.size12,
+              left: Sizes.size20,
+              right: Sizes.size20,
+            ),
+            child: Container(
+              //padding: const EdgeInsets.symmetric(vertical: Sizes.size16),
+              decoration: BoxDecoration(
+                color: Theme.of(context).primaryColor,
+              ),
+              child: const Text(
+                "Next",
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: Sizes.size20,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
             ),
           ),
         ),

@@ -22,6 +22,8 @@ tiktok_code_challenge01
 - 왜 안드로이드에서는 formfiled 동작하는데, ios 에서는 안되지?
 - datePicker : ios "CupertinoDatePicker" vs aos "showDatePicker"
 
+
+
 # 새로웠던 것을 배운날! 뚜둔
 - scaffold body background 색상이 회색이었다니?! 이 부분을 한번에 theme으로 main.dart에 설정이 가능하다니!!
 - brithday 날짜에 접근하는 법 : default 날짜 가능 max(12년전? -> 12살부터 이용가능)
@@ -34,6 +36,9 @@ tiktok_code_challenge01
   child: Text(interest),
   ), 이렇게 불러올 수가 있구나!
 - *TextField는 당연하겠지만서도 String 으로 다룬다. phone + email 문자열로 유효성검사하면됨!
+-  color: Colors.black.withOpacity(0.05), => color: Color.fromRGBO(0, 0, 0, 0.05),
+- Wrap() : chidren 아이들 가로로 배치 but 한줄 넘어가면 알아서 다음줄로 이동됨
+- bottomNavigationBar 에서 SafeArea()를 사용하고 내부적인 패딩을 추가하면 내부에서 텍스트나 등등이 밀려서 안보일 수도 있음
 
 # 아쉬었던 점
 - 1. 아직은 화면별로 폴더를 만들었는데 시간이 된다면 다시 기능별로 나누어서 작업을 해보고싶다

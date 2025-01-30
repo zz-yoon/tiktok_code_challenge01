@@ -18,11 +18,14 @@ tiktok_code_challenge01
 - GestureDetector() + SingleChildScrollView() 터치에 대해서 문제가 없는가??? 
 - next라는 버튼이 submit 이라고 생각했는데 키보드의 done을 누를때도 넘어가게 할 수 있구나? 
 - ios, aos 앱을 다 만들게 된다면 material style vs cupertino style?
-- 
+- import 시에 절대경로 vs 상대경로 어떻게 사용하는 것을 더 권고 하는가? 그리고 그 이유는 무엇인가??
 
 # 새로웠던 것을 배운날! 뚜둔
 - scaffold body background 색상이 회색이었다니?! 이 부분을 한번에 theme으로 main.dart에 설정이 가능하다니!!
 - brithday 날짜에 접근하는 법 : default 날짜 가능 max(12년전? -> 12살부터 이용가능)
+-  Navigator.of(context)
+   .push(MaterialPageRoute(builder: (context) => const LoginFormScreen())); => 초기 Navigator 작업
+- Flutter에서 TextFormField에 값을 입력할 때, controller를 명시적으로 추가하지 않으면 내부적으로 상태를 관리하지만, 특정 경우 입력이 안 되는 문제가 발생할 수 있다. (확인필요)
 - *TextField는 당연하겠지만서도 String 으로 다룬다. phone + email 문자열로 유효성검사하면됨!
 
 # 아쉬었던 점

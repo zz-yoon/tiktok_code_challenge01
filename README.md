@@ -20,6 +20,7 @@ tiktok_code_challenge01
 - ios, aos 앱을 다 만들게 된다면 material style vs cupertino style?
 - import 시에 절대경로 vs 상대경로 어떻게 사용하는 것을 더 권고 하는가? 그리고 그 이유는 무엇인가??
 - 왜 안드로이드에서는 formfiled 동작하는데, ios 에서는 안되지?
+- datePicker : ios "CupertinoDatePicker" vs aos "showDatePicker"
 
 # 새로웠던 것을 배운날! 뚜둔
 - scaffold body background 색상이 회색이었다니?! 이 부분을 한번에 theme으로 main.dart에 설정이 가능하다니!!

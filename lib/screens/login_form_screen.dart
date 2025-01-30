@@ -19,6 +19,7 @@ class _LoginFormScreenState extends State<LoginFormScreen> {
     if (_formKey.currentState != null) {
       if (_formKey.currentState!.validate()) {
         _formKey.currentState!.save();
+        print(formData.values);
       }
     }
   }
@@ -44,7 +45,12 @@ class _LoginFormScreenState extends State<LoginFormScreen> {
                     validator: (value) {
                       return null;
                     },
-                    onSaved: (newValue) => print(newValue),
+                    onSaved: (newValue) {
+                      //newValue가 null일수도 있는 String 이기 때문에
+                      if (newValue != null) {
+                        formData['email'] = newValue;
+                      }
+                    },
                   ),
                   Gaps.v28,
                   TextFormField(
@@ -54,7 +60,11 @@ class _LoginFormScreenState extends State<LoginFormScreen> {
                     validator: (value) {
                       return null;
                     },
-                    onSaved: (newValue) => print(newValue),
+                    onSaved: (newValue) {
+                      if (newValue != null) {
+                        formData['password'] = newValue;
+                      }
+                    },
                   ),
                   Gaps.v28,
                   FullButton(

@@ -12,10 +12,15 @@ class LoginFormScreen extends StatefulWidget {
 
 class _LoginFormScreenState extends State<LoginFormScreen> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+  Map<String, String> formData = {};
 
   //submit
   void _onSubmit() {
-    _formKey.currentState?.validate();
+    if (_formKey.currentState != null) {
+      if (_formKey.currentState!.validate()) {
+        _formKey.currentState!.save();
+      }
+    }
   }
 
   @override
@@ -25,36 +30,40 @@ class _LoginFormScreenState extends State<LoginFormScreen> {
         title: Text("Log in"),
       ),
       body: SafeArea(
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: Sizes.size36),
-          child: Form(
-            key: _formKey,
-            child: Column(
-              children: [
-                TextFormField(
-                  decoration: InputDecoration(
-                    hintText: "Email",
+        child: SingleChildScrollView(
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: Sizes.size36),
+            child: Form(
+              key: _formKey,
+              child: Column(
+                children: [
+                  TextFormField(
+                    decoration: InputDecoration(
+                      hintText: "Email",
+                    ),
+                    validator: (value) {
+                      return null;
+                    },
+                    onSaved: (newValue) => print(newValue),
                   ),
-                  validator: (value) {
-                    return "i dont like your email";
-                  },
-                ),
-                Gaps.v28,
-                TextFormField(
-                  decoration: InputDecoration(
-                    hintText: "Password",
+                  Gaps.v28,
+                  TextFormField(
+                    decoration: InputDecoration(
+                      hintText: "Password",
+                    ),
+                    validator: (value) {
+                      return null;
+                    },
+                    onSaved: (newValue) => print(newValue),
                   ),
-                  validator: (value) {
-                    return "wrong";
-                  },
-                ),
-                Gaps.v28,
-                FullButton(
-                  text: "Next",
-                  textColor: Colors.amber,
-                  onTap: _onSubmit,
-                ),
-              ],
+                  Gaps.v28,
+                  FullButton(
+                    text: "Next",
+                    textColor: Colors.amber,
+                    onTap: _onSubmit,
+                  ),
+                ],
+              ),
             ),
           ),
         ),

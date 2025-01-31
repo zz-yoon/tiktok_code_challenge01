@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:tiktok_code_challenge01/constants/gaps.dart';
 import 'package:tiktok_code_challenge01/constants/sizes.dart';
 import 'package:tiktok_code_challenge01/interests_data.dart';
+import 'package:tiktok_code_challenge01/screens/onboarding/tutorial_screen.dart';
 import 'package:tiktok_code_challenge01/widgets/chip.dart';
 
 class InterestsScreen extends StatefulWidget {
@@ -28,6 +29,12 @@ class _InterestsScreenState extends State<InterestsScreen> {
         _showTitle = false;
       });
     }
+  }
+
+  //다음 버튼
+  void _onNextTap() {
+    Navigator.push(
+        context, MaterialPageRoute(builder: (context) => TutorialScreen()));
   }
 
   @override
@@ -102,18 +109,21 @@ class _InterestsScreenState extends State<InterestsScreen> {
               left: Sizes.size5,
               right: Sizes.size5,
             ),
-            child: Container(
-              padding: const EdgeInsets.symmetric(vertical: Sizes.size10),
-              decoration: BoxDecoration(
-                color: Theme.of(context).primaryColor,
-              ),
-              child: const Text(
-                "Next",
-                textAlign: TextAlign.center,
-                style: TextStyle(
-                  color: Colors.white,
-                  fontSize: Sizes.size20,
-                  fontWeight: FontWeight.bold,
+            child: GestureDetector(
+              onTap: _onNextTap,
+              child: Container(
+                padding: const EdgeInsets.symmetric(vertical: Sizes.size10),
+                decoration: BoxDecoration(
+                  color: Theme.of(context).primaryColor,
+                ),
+                child: const Text(
+                  "Next",
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: Sizes.size20,
+                    fontWeight: FontWeight.bold,
+                  ),
                 ),
               ),
             ),

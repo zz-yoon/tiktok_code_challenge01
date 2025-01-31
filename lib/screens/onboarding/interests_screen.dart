@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:tiktok_code_challenge01/constants/gaps.dart';
 import 'package:tiktok_code_challenge01/constants/sizes.dart';
 import 'package:tiktok_code_challenge01/interests_data.dart';
-import 'package:tiktok_code_challenge01/screens/onboarding/tutorial_screen.dart';
+import 'package:tiktok_code_challenge01/screens/onboarding/tutorial_screen2.dart';
 import 'package:tiktok_code_challenge01/widgets/chip.dart';
 
 class InterestsScreen extends StatefulWidget {
@@ -34,7 +34,7 @@ class _InterestsScreenState extends State<InterestsScreen> {
   //다음 버튼
   void _onNextTap() {
     Navigator.push(
-        context, MaterialPageRoute(builder: (context) => TutorialScreen()));
+        context, MaterialPageRoute(builder: (context) => TutorialScreen2()));
   }
 
   @override

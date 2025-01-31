@@ -39,6 +39,7 @@ tiktok_code_challenge01
 -  color: Colors.black.withOpacity(0.05), => color: Color.fromRGBO(0, 0, 0, 0.05),
 - Wrap() : chidren 아이들 가로로 배치 but 한줄 넘어가면 알아서 다음줄로 이동됨
 - bottomNavigationBar 에서 SafeArea()를 사용하고 내부적인 패딩을 추가하면 내부에서 텍스트나 등등이 밀려서 안보일 수도 있음
+- `AnimatedCrossFade` : 두 컴포넌트를 fade-in, fade-out 을 하게 해준다
 
 
 # 아쉬었던 점

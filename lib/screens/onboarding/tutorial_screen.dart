@@ -5,6 +5,22 @@ import 'package:tiktok_code_challenge01/constants/sizes.dart';
 class TutorialScreen extends StatelessWidget {
   const TutorialScreen({super.key});
 
+  /*
+* Text(
+    "Watch cool videos",
+    style: TextStyle(
+      fontSize: Sizes.size40,
+      fontWeight: FontWeight.bold,
+    ),
+  ),
+  Gaps.v16,
+  Text(
+    "Videos are personalized for ypu based on what you watc, like, and share",
+    style: TextStyle(
+        fontSize: Sizes.size20, color: Colors.black38),
+  ),
+  * */
+
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
